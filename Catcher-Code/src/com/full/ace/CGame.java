@@ -18,7 +18,7 @@ public class CGame extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 		camera=new OrthographicCamera();
-		this.setScreen(new SplashScreen(this));
+		this.setScreen(new Splash(this));
 	}
 
 	@Override
