@@ -1,13 +1,19 @@
 package com.full.ace;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
 public class GameScreen implements Screen {
 	
 	final CGame game;
+	GameWorld world;
+	GameRenderer renderer;
 	
 	public GameScreen(final CGame game){
 		this.game=game;
+		world=new GameWorld(game);
+		renderer=new GameRenderer(game,world);
+		Gdx.input.setInputProcessor(new GameInputHandler(game,world));
 	}
 	
 	@Override
@@ -18,9 +24,8 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-	game.batch.begin();
-	game.batch.draw(Loader.GameBackground,0,0);
-	game.batch.end();
+	world.update(delta);
+	renderer.render();
 	}
 
 	@Override
@@ -51,6 +56,11 @@ public class GameScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void nullify(){
+		world=null;
+		renderer=null;
 	}
 
 }
