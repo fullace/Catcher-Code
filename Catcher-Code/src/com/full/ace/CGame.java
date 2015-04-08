@@ -26,4 +26,13 @@ public class CGame extends Game {
 		super.render();
 		
 	}
+	
+	public boolean InBounds(int x,int y,float up,float down,float left,float right){
+		if(y > up && y < down && x > left && x < right){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }

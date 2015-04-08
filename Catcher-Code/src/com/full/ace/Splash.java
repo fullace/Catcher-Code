@@ -110,6 +110,9 @@ public class Splash implements Screen {
         	state3+=Gdx.graphics.getDeltaTime();
         	game.batch.draw(anim3.getKeyFrame(state3),200,120);
         }
+        if(anim3.isAnimationFinished(state3)){
+        	game.setScreen(new Loader(game));
+        }
         game.batch.end();
 	}
 
