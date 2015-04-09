@@ -1,9 +1,12 @@
 package com.full.ace;
 
+import java.util.Random;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.full.ace.Normal.EnemyN;
+import com.full.ace.RandomR.EnemyR;
 import com.full.ace.Survival.EnemyS;
 
 public class GameRenderer {
@@ -58,8 +61,45 @@ public class GameRenderer {
         			break;
         		}
         	}
+        	
         }
+        if(world.gamemode==world.MODE_RANDOM){
+    		for(int i = 0; i < world.random.enemys.size; i++){
+    			EnemyR e = (EnemyR) world.random.enemys.get(i);
+    			switch(e.colour){
+    				case 0:
+    					game.batch.draw(Loader.Silver,e.position.x,e.position.y);
+    					break;
+    				case 1:
+    					game.batch.draw(Loader.Blue,e.position.x,e.position.y);
+    					break;
+    				case 2:
+    					game.batch.draw(Loader.Red,e.position.x,e.position.y);
+    					break;
+    				case 3:
+    					game.batch.draw(Loader.Green,e.position.x,e.position.y);
+    					break;
+    				case 4:
+    					game.batch.draw(Loader.Pink,e.position.x,e.position.y);
+    					break;
+    				case 5:
+    					game.batch.draw(Loader.Black,e.position.x,e.position.y);
+    					break;
+    				case 6:
+    					game.batch.draw(Loader.White,e.position.x,e.position.y);
+    					break;
+    				case 7:
+    					game.batch.draw(Loader.Orange,e.position.x,e.position.y);
+    					break;
+    				case 8:
+    					game.batch.draw(Loader.Yellow,e.position.x,e.position.y);
+    					break;
+    				case 9:
+    					game.batch.draw(Loader.Cyan,e.position.x,e.position.y);
+    					break;
+    			}
+    		}
         game.batch.end();
 	}
-
+	}
 }

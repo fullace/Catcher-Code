@@ -19,6 +19,7 @@ public class GameWorld {
 	Preferences balls;
 	public Normal normal;
 	public Survival survival;
+	public RandomR random;
 	
 	public GameWorld(final Catcher game,int gamemode){
 		this.game=game;
@@ -35,6 +36,7 @@ public class GameWorld {
 			survival = new Survival(player,game,this);
 			break;
 		case MODE_RANDOM:
+			random = new RandomR(player,game,this);
 			break;
 		}
 	}
@@ -56,6 +58,9 @@ public class GameWorld {
 		if(gamemode == MODE_SURVIVAL && state == GameState.Running){
 			survival.update(delta);
 		}
+		if(gamemode == MODE_RANDOM && state == GameState.Running){
+			random.update(delta);
+		}
 		if(state==GameState.GameOver && gamemode == MODE_NORMAL){
 			if(score > normal.HighScore){
 				normal.score.putInteger("scorenormal", score);
@@ -66,6 +71,12 @@ public class GameWorld {
 			if(score > survival.HighScore){
 				survival.score.putInteger("scoresurvival", score);
 				survival.score.flush();
+			}
+		}
+		if(state==GameState.GameOver && gamemode == MODE_RANDOM){
+			if(score > random.HighScore){
+				random.score.putInteger("scorerandom", score);
+				random.score.flush();
 			}
 		}
 	}
