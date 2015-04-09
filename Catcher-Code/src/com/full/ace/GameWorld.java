@@ -17,6 +17,7 @@ public class GameWorld {
 	public static final int MODE_RANDOM=3;
 	public int score;
 	Preferences balls;
+	public Normal normal;
 	
 	public GameWorld(final Catcher game,int gamemode){
 		this.game=game;
@@ -25,7 +26,15 @@ public class GameWorld {
 		player=new Player(400-40/2,480);
 		player.setWaiting();
 		score=0;
-		balls=Gdx.app.getPreferences("balls");
+		switch(gamemode){
+		case MODE_NORMAL:
+			normal = new Normal(player,game,this);
+			break;
+		case MODE_SURVIVAL:
+			break;
+		case MODE_RANDOM:
+			break;
+		}
 	}
 	
 	public void update(float delta){
@@ -40,7 +49,13 @@ public class GameWorld {
 			state=GameState.Running;
 		}
 		if(gamemode==MODE_NORMAL && state==GameState.Running){
-			
+			normal.update(delta);
+		}
+		if(state==GameState.GameOver && gamemode == MODE_NORMAL){
+			if(score > normal.HighScore){
+				normal.score.putInteger("scorenormal", score);
+				normal.score.flush();
+			}
 		}
 	}
 }

@@ -17,6 +17,10 @@ public class Catcher extends Game {
 	public static float SCREEN_WIDTH;
 	public static float SCREEN_HEIGHT;
 	public Texture Ball;
+	public int scoreNormal;
+	public int scoreSurvival;
+	public int scoreRandom;
+	public boolean blue,green,red,orange,cyan,pink,black,white,yellow;
 	
 	@Override
 	public void create () {
@@ -24,7 +28,13 @@ public class Catcher extends Game {
 		camera=new OrthographicCamera();
 		SCREEN_WIDTH=Gdx.graphics.getWidth() / 800;
 		SCREEN_HEIGHT=Gdx.graphics.getHeight() / 480;
+		//Preferences
 		Preferences ball = Gdx.app.getPreferences("ball");
+		//prefs high scores
+		Preferences HighScore = Gdx.app.getPreferences("highscore");
+		//prefs balls
+		Preferences balls = Gdx.app.getPreferences("balls");
+		//prefs for Texture
 		Ball=new Texture(Gdx.files.internal(ball.getString("player","silver.png")));
 		this.setScreen(new Splash(this));
 	}
