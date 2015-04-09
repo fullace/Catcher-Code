@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.full.ace.Normal.EnemyN;
+import com.full.ace.Survival.EnemyS;
 
 public class GameRenderer {
 	final Catcher game;
@@ -31,6 +32,31 @@ public class GameRenderer {
         	}
         	if(world.normal.c!=null){
         		game.batch.draw(Loader.Blue,world.normal.c.position.x,world.normal.c.position.y);
+        	}
+        }
+        if(world.gamemode==world.MODE_SURVIVAL){
+        	for(int i = 0; i < world.survival.enemys.size; i++){
+        		EnemyS e = (EnemyS) world.survival.enemys.get(i);
+        		switch(e.pos){
+        		case 0:
+        			game.batch.draw(Loader.sTop,e.position.x,e.position.y);
+        			break;
+        		case 1:
+        			game.batch.draw(Loader.sBottom,e.position.x,e.position.y);
+        			break;
+        		case 2:
+        			game.batch.draw(Loader.sLeft,e.position.x,e.position.y);
+        			break;
+        		case 3:
+        			game.batch.draw(Loader.sRight,e.position.x,e.position.y);
+        			break;
+        		case 4:
+        			game.batch.draw(Loader.sBest,e.position.x,e.position.y);
+        			break;
+        		case 5:
+        			game.batch.draw(Loader.sBest,e.position.x,e.position.y);
+        			break;
+        		}
         	}
         }
         game.batch.end();

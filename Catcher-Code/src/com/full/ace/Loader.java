@@ -12,6 +12,8 @@ public class Loader implements Screen {
 	public static Texture GameBackground;
 	//different coloured balls
 	public static Texture Silver,Cyan,Red,Orange,White,Black,Pink,Green,Blue,Yellow;
+	//survival enemys
+	public static Texture sTop,sBottom,sLeft,sRight,sBest;
 	
 	public Loader(final Catcher game){
 		this.game=game;
@@ -41,6 +43,12 @@ public class Loader implements Screen {
 		Green  = new Texture(Gdx.files.internal("green.png"));
 		Blue   = new Texture(Gdx.files.internal("blue.png"));
 		Yellow = new Texture(Gdx.files.internal("yellow.png"));
+		
+		sTop   = new Texture(Gdx.files.internal("sTop.png"));
+		sBottom= new Texture(Gdx.files.internal("sBottom.png"));
+		sLeft  = new Texture(Gdx.files.internal("sLeft.png"));
+		sRight = new Texture(Gdx.files.internal("sRight.png"));
+		sBest  = new Texture(Gdx.files.internal("sBest.png"));
 		
 		game.setScreen(new MainMenuScreen(game));
 	}
