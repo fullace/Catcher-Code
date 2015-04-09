@@ -22,6 +22,7 @@ public class ShopScreen implements Screen {
 	public void render(float delta) {
 		game.batch.begin();
 		game.batch.draw(Loader.Shop, 0,0);
+		game.batch.draw(game.Ball,105,130);
 		game.batch.end();
 	}
 

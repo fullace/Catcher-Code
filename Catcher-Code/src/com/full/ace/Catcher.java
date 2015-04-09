@@ -2,6 +2,7 @@ package com.full.ace;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -23,7 +24,8 @@ public class Catcher extends Game {
 		camera=new OrthographicCamera();
 		SCREEN_WIDTH=Gdx.graphics.getWidth() / 800;
 		SCREEN_HEIGHT=Gdx.graphics.getHeight() / 480;
-		Ball=new Texture(Gdx.files.internal("silver.png"));
+		Preferences ball = Gdx.app.getPreferences("ball");
+		Ball=new Texture(Gdx.files.internal(ball.getString("player","silver.png")));
 		this.setScreen(new Splash(this));
 	}
 
