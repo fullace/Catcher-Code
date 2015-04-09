@@ -40,6 +40,7 @@ public class RandomR {
 		spawnCounter=TimeUtils.nanoTime();
 		EnemyR e = new EnemyR(player);
 		enemys.add(e);
+		world.score++;
 	}
 	
 	private void updateEnemys(float delta){

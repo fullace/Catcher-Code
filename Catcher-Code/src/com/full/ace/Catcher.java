@@ -6,13 +6,15 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Catcher extends Game {
 	private static final String TITLE = "Catcher";
-	private static final float VERSION = 0.5f;
-	private static final int VERSION_NUMBER = 5;
+	private static final float VERSION = 0.9f;
+	private static final int VERSION_NUMBER = 11;
 	public SpriteBatch batch;
+	public BitmapFont writer;
 	public OrthographicCamera camera;
 	public static float SCREEN_WIDTH;
 	public static float SCREEN_HEIGHT;
@@ -25,6 +27,7 @@ public class Catcher extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		writer  = new BitmapFont(Gdx.files.internal("catcher.fnt"));
 		camera=new OrthographicCamera();
 		SCREEN_WIDTH=Gdx.graphics.getWidth() / 800;
 		SCREEN_HEIGHT=Gdx.graphics.getHeight() / 480;

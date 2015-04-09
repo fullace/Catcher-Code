@@ -9,7 +9,7 @@ public class Loader implements Screen {
 	//menus
 	public static Texture MainMenu,HighScore,Shop,ShopLock;
 	//Ingame Textures
-	public static Texture GameBackground;
+	public static Texture GameBackground,ScoreBord,GameOver,Overlay;
 	//different coloured balls
 	public static Texture Silver,Cyan,Red,Orange,White,Black,Pink,Green,Blue,Yellow;
 	//survival enemys
@@ -32,6 +32,9 @@ public class Loader implements Screen {
 		ShopLock  = new Texture(Gdx.files.internal("ShopLock.png"));
 		
 		GameBackground = new Texture(Gdx.files.internal("GameBackground.png"));
+		ScoreBord      = new Texture(Gdx.files.internal("ScoreBoard.png"));
+		GameOver       = new Texture(Gdx.files.internal("GameOver.png"));
+		Overlay        = new Texture(Gdx.files.internal("Overlay.png"));
 		
 		Silver = new Texture(Gdx.files.internal("silver.png"));
 		Cyan   = new Texture(Gdx.files.internal("cyan.png"));

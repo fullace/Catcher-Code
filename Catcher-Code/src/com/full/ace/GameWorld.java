@@ -20,6 +20,7 @@ public class GameWorld {
 	public Normal normal;
 	public Survival survival;
 	public RandomR random;
+	Preferences timesPlayed;
 	
 	public GameWorld(final Catcher game,int gamemode){
 		this.game=game;
@@ -27,18 +28,27 @@ public class GameWorld {
 		this.gamemode=gamemode;
 		player=new Player(400-40/2,480);
 		player.setWaiting();
+		timesPlayed = Gdx.app.getPreferences("timesPlayed");
 		score=0;
+		balls = Gdx.app.getPreferences("balls");
 		switch(gamemode){
 		case MODE_NORMAL:
 			normal = new Normal(player,game,this);
+			int tp = timesPlayed.getInteger("normal",0);
+			timesPlayed.putInteger("normal",tp+1);
 			break;
 		case MODE_SURVIVAL:
 			survival = new Survival(player,game,this);
+			int tps = timesPlayed.getInteger("survival",0);
+			timesPlayed.putInteger("survival", tps+1);
 			break;
 		case MODE_RANDOM:
 			random = new RandomR(player,game,this);
+			int tpr = timesPlayed.getInteger("random",0);
+			timesPlayed.putInteger("random", tpr+1);
 			break;
 		}
+		timesPlayed.flush();
 	}
 	
 	public void update(float delta){
@@ -65,19 +75,35 @@ public class GameWorld {
 			if(score > normal.HighScore){
 				normal.score.putInteger("scorenormal", score);
 				normal.score.flush();
+				if(score>1){
+					balls.putBoolean("blue", true);
+					balls.flush();
+				}
 			}
+			game.setScreen(new GameOverScreen(game,score,1));
 		}
 		if(state==GameState.GameOver && gamemode == MODE_SURVIVAL){
 			if(score > survival.HighScore){
 				survival.score.putInteger("scoresurvival", score);
 				survival.score.flush();
+				if(score>5){
+					balls.putBoolean("green", true);
+					balls.flush();
+				}
 			}
+			game.setScreen(new GameOverScreen(game,score,2));
 		}
 		if(state==GameState.GameOver && gamemode == MODE_RANDOM){
 			if(score > random.HighScore){
 				random.score.putInteger("scorerandom", score);
 				random.score.flush();
+				if(score>2){
+					balls.putBoolean("red",true);
+					balls.flush();
+				}
 			}
+			Gdx.app.log("score", String.valueOf(score));
+			game.setScreen(new GameOverScreen(game,score,3));
 		}
 	}
 }

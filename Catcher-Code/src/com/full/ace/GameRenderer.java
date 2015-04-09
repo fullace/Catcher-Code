@@ -14,9 +14,12 @@ public class GameRenderer {
 	private GameWorld world;
 	
 	public GameRenderer(final Catcher game,GameWorld world){
+		float screenWidth  = Gdx.graphics.getWidth() / 800;
+		float screenHeight = Gdx.graphics.getHeight()/ 480;
 		this.game=game;
 		this.world=world;
 		game.camera.setToOrtho(false,800,480);
+		game.writer.setScale(screenWidth,screenHeight);
 	}
 	
 	public void render(){
@@ -27,6 +30,13 @@ public class GameRenderer {
         game.batch.setProjectionMatrix(game.camera.combined);
         game.batch.begin();
         game.batch.draw(Loader.GameBackground, 0,0);
+        game.batch.draw(Loader.ScoreBord,290,420);
+        if(world.gamemode!=world.MODE_SURVIVAL){
+        	game.writer.draw(game.batch, "Score: "+world.score,320 , 465);
+        }
+        if(world.gamemode==world.MODE_SURVIVAL){
+        	game.writer.draw(game.batch, "Score: "+world.score/10,320,465);
+        }
         game.batch.draw(game.Ball,world.player.position.x,world.player.position.y);
         if(world.gamemode==world.MODE_NORMAL){
         	for(int i = 0; i < world.normal.enemys.size; i++){
@@ -99,7 +109,8 @@ public class GameRenderer {
     					break;
     			}
     		}
-        game.batch.end();
+        
 	}
+        game.batch.end();
 	}
 }
