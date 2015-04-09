@@ -4,9 +4,9 @@ import com.badlogic.gdx.Screen;
 
 public class HighScoreScreen implements Screen {
 	
-	final CGame game;
+	final Catcher game;
 	
-	public HighScoreScreen(final CGame game){
+	public HighScoreScreen(final Catcher game){
 		this.game=game;
 	}
 

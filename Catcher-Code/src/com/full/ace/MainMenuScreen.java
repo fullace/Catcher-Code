@@ -2,12 +2,14 @@ package com.full.ace;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
 
 public class MainMenuScreen implements Screen {
 	
-	final CGame game;
+	final Catcher game;
+	public static Texture Ball;
 	
-	public MainMenuScreen(final CGame game){
+	public MainMenuScreen(final Catcher game){
 		this.game=game;
 		Gdx.input.setInputProcessor(new InputProcessorMainMenu(game));
 	}

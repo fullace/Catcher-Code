@@ -2,16 +2,17 @@ package com.full.ace;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
 
 public class GameScreen implements Screen {
 	
-	final CGame game;
+	final Catcher game;
 	GameWorld world;
 	GameRenderer renderer;
 	
-	public GameScreen(final CGame game){
+	public GameScreen(final Catcher game,int gamemode){
 		this.game=game;
-		world=new GameWorld(game);
+		world=new GameWorld(game,gamemode);
 		renderer=new GameRenderer(game,world);
 		Gdx.input.setInputProcessor(new GameInputHandler(game,world));
 	}

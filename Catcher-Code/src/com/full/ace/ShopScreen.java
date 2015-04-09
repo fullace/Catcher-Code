@@ -1,13 +1,15 @@
 package com.full.ace;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
 public class ShopScreen implements Screen {
 	
-	final CGame game;
+	final Catcher game;
 	
-	public ShopScreen(final CGame game){
+	public ShopScreen(final Catcher game){
 		this.game=game;
+		Gdx.input.setInputProcessor(new InputHandlerShop(game));
 	}
 
 	@Override

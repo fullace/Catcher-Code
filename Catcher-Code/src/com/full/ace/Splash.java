@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Splash implements Screen {
 	//Showing the Full Ace Splash Animation
 	
-	final CGame game;
+	final Catcher game;
 	
 	//animation variables
 	
@@ -26,7 +26,7 @@ public class Splash implements Screen {
 	
 	float                    state1,state2,state3;
 	
-	public Splash(final CGame game){
+	public Splash(final Catcher game){
 		this.game=game;
 		game.camera.setToOrtho(false,800,480);
 		

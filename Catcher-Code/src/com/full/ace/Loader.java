@@ -5,13 +5,15 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Loader implements Screen {
-	final CGame game;
+	final Catcher game;
 	//menus
 	public static Texture MainMenu,HighScore,Shop,ShopLock;
 	//Ingame Textures
 	public static Texture GameBackground;
+	//different coloured balls
+	public static Texture Silver,Cyan;
 	
-	public Loader(final CGame game){
+	public Loader(final Catcher game){
 		this.game=game;
 	}
 
@@ -28,6 +30,9 @@ public class Loader implements Screen {
 		ShopLock  = new Texture(Gdx.files.internal("ShopLock.png"));
 		
 		GameBackground = new Texture(Gdx.files.internal("GameBackground.png"));
+		
+		Silver = new Texture(Gdx.files.internal("silver.png"));
+		Cyan   = new Texture(Gdx.files.internal("cyan.png"));
 		
 		game.setScreen(new MainMenuScreen(game));
 	}
