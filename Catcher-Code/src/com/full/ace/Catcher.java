@@ -10,8 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Catcher extends Game {
 	private static final String TITLE = "Catcher";
-	private static final float VERSION = 0.1f;
-	private static final int VERSION_NUMBER = 1;
+	private static final float VERSION = 0.5f;
+	private static final int VERSION_NUMBER = 5;
 	public SpriteBatch batch;
 	public OrthographicCamera camera;
 	public static float SCREEN_WIDTH;
