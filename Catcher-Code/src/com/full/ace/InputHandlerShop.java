@@ -8,10 +8,12 @@ public class InputHandlerShop implements InputProcessor {
 	
 	final Catcher game;
 	Preferences ball;
+	Preferences balls;
 	
 	public InputHandlerShop(final Catcher game){
 		this.game=game;
 	    ball = Gdx.app.getPreferences("ball");
+	    balls = Gdx.app.getPreferences("balls");
 	}
 
 	@Override
@@ -39,40 +41,67 @@ public class InputHandlerShop implements InputProcessor {
 			ball.putString("player","silver.png");
 		}
 		if(game.InBounds(screenX, screenY, 150 * game.SCREEN_HEIGHT, 230 * game.SCREEN_HEIGHT, 355 * game.SCREEN_WIDTH, 435 * game.SCREEN_WIDTH)){
-			game.Ball=Loader.Blue;
-			ball.putString("player","blue.png");
+			boolean blue = balls.getBoolean("blue",false);
+			if(blue==true){
+				game.Ball=Loader.Blue;
+				ball.putString("player","blue.png");
+			}
 		}
 		if(game.InBounds(screenX, screenY, 150 * game.SCREEN_HEIGHT,230 * game.SCREEN_HEIGHT, 455 * game.SCREEN_WIDTH, 535 * game.SCREEN_WIDTH )){
-			game.Ball=Loader.Green;
-			ball.putString("player", "green.png");
+			boolean green = balls.getBoolean("green",false);
+			if(green==true){
+				game.Ball=Loader.Green;
+				ball.putString("player", "green.png");
+			}
 		}
 		if(game.InBounds(screenX, screenY, 150 * game.SCREEN_HEIGHT,230 * game.SCREEN_HEIGHT,560 * game.SCREEN_WIDTH, 640 * game.SCREEN_WIDTH)){
-			game.Ball=Loader.Red;
-			ball.putString("player", "red.png");
+			boolean red = balls.getBoolean("red",false);
+			if(red==true){
+				game.Ball=Loader.Red;
+				ball.putString("player", "red.png");
+			}
 		}
 		if(game.InBounds(screenX, screenY, 150 * game.SCREEN_HEIGHT,230 * game.SCREEN_HEIGHT,690 * game.SCREEN_WIDTH,770 * game.SCREEN_WIDTH )){
-			game.Ball=Loader.Orange;
-			ball.putString("player", "orange.png");
+			boolean orange = balls.getBoolean("orange",false);
+			if(orange==true){
+				game.Ball=Loader.Orange;
+				ball.putString("player", "orange.png");
+			}
 		}
 		if(game.InBounds(screenX, screenY, 300 * game.SCREEN_HEIGHT, 380 * game.SCREEN_HEIGHT, 250 * game.SCREEN_WIDTH, 330 * game.SCREEN_WIDTH)){
-			game.Ball=Loader.Cyan;
-			ball.putString("player", "cyan.png");
+			boolean cyan = balls.getBoolean("cyan",false);
+			if(cyan==true){
+				game.Ball=Loader.Cyan;
+				ball.putString("player", "cyan.png");
+			}
 		}
 		if(game.InBounds(screenX, screenY, 300 * game.SCREEN_HEIGHT,380 * game.SCREEN_HEIGHT, 355 * game.SCREEN_WIDTH,435 * game.SCREEN_WIDTH)){
-			game.Ball=Loader.Pink;
-			ball.putString("player", "pink.png");
+			boolean pink = balls.getBoolean("pink",false);
+			if(pink==true){
+				game.Ball=Loader.Pink;
+				ball.putString("player", "pink.png");
+			}
 		}
 		if(game.InBounds(screenX, screenY, 300 * game.SCREEN_HEIGHT,380 * game.SCREEN_HEIGHT,455 * game.SCREEN_WIDTH,535 * game.SCREEN_WIDTH)){
-			game.Ball=Loader.Black;
-			ball.putString("player", "black.png");
+			boolean black = balls.getBoolean("black",false);
+			if(black==true){
+				game.Ball=Loader.Black;
+				ball.putString("player", "black.png");
+			}
 		}
 		if(game.InBounds(screenX, screenY, 300 * game.SCREEN_HEIGHT, 380 * game.SCREEN_HEIGHT, 560 * game.SCREEN_WIDTH,640 * game.SCREEN_WIDTH)){
-			game.Ball=Loader.White;
-			ball.putString("player", "white.png");
+			boolean white = balls.getBoolean("white",false);
+			if(white==true){
+				game.Ball=Loader.White;
+				ball.putString("player", "white.png");
+			}
 		}
 		if(game.InBounds(screenX, screenY, 300 * game.SCREEN_HEIGHT, 380 * game.SCREEN_HEIGHT, 690 * game.SCREEN_WIDTH, 770 * game.SCREEN_WIDTH)){
-			game.Ball=Loader.Yellow;
-			ball.putString("player","yellow.png");
+			boolean yellow = balls.getBoolean("yellow",false);
+			if(yellow==true){
+				game.Ball=Loader.Yellow;
+				ball.putString("player","yellow.png");
+			}
 		}
 		if(game.InBounds(screenX, screenY, 5 * game.SCREEN_HEIGHT,125 * game.SCREEN_HEIGHT,675 * game.SCREEN_WIDTH,795 * game.SCREEN_WIDTH)){
 			game.setScreen(new MainMenuScreen(game));
