@@ -25,6 +25,7 @@ public class Catcher extends Game {
 	public int scoreSurvival;
 	public int scoreRandom;
 	public boolean blue,green,red,orange,cyan,pink,black,white,yellow;
+	public boolean showWindowBig,showWindowMedium,showWindowSmall;
 	
 	@Override
 	public void create () {
@@ -45,6 +46,9 @@ public class Catcher extends Game {
 		//prefs for Texture
 		Ball=new Texture(Gdx.files.internal(ball.getString("player","silver.png")));
 		this.setScreen(new Splash(this));
+		showWindowBig=false;
+		showWindowMedium=false;
+		showWindowSmall=false;
 	}
 
 	@Override

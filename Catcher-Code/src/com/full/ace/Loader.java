@@ -14,6 +14,8 @@ public class Loader implements Screen {
 	public static Texture Silver,Cyan,Red,Orange,White,Black,Pink,Green,Blue,Yellow;
 	//survival enemys
 	public static Texture sTop,sBottom,sLeft,sRight,sBest;
+	//windows
+	public static Texture windowB,windowM,windowS;
 	
 	public Loader(final Catcher game){
 		this.game=game;
@@ -52,6 +54,10 @@ public class Loader implements Screen {
 		sLeft  = new Texture(Gdx.files.internal("sLeft.png"));
 		sRight = new Texture(Gdx.files.internal("sRight.png"));
 		sBest  = new Texture(Gdx.files.internal("sBest.png"));
+		
+		windowB = new Texture(Gdx.files.internal("windowB.png"));
+		windowM = new Texture(Gdx.files.internal("windowM.png"));
+		windowS = new Texture(Gdx.files.internal("windowS.png"));
 		
 		game.setScreen(new MainMenuScreen(game));
 	}

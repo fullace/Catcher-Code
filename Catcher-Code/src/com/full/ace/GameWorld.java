@@ -29,7 +29,7 @@ public class GameWorld {
 		player=new Player(400-40/2,480);
 		player.setWaiting();
 		timesPlayed = Gdx.app.getPreferences("timesPlayed");
-		score=0;
+		score=500;
 		balls = Gdx.app.getPreferences("balls");
 		switch(gamemode){
 		case MODE_NORMAL:
@@ -75,8 +75,16 @@ public class GameWorld {
 			if(score > normal.HighScore){
 				normal.score.putInteger("scorenormal", score);
 				normal.score.flush();
-				if(score>1){
+				if(score>9){
 					balls.putBoolean("blue", true);
+					balls.flush();
+				}
+				if(score>19){
+					balls.putBoolean("red",true);
+					balls.flush();
+				}
+				if(score>29){
+					balls.putBoolean("black", true);
 					balls.flush();
 				}
 			}
@@ -86,8 +94,16 @@ public class GameWorld {
 			if(score > survival.HighScore){
 				survival.score.putInteger("scoresurvival", score);
 				survival.score.flush();
-				if(score>5){
+				if(score/10>9){
 					balls.putBoolean("green", true);
+					balls.flush();
+				}
+				if(score/10>19){
+					balls.putBoolean("pink", true);
+					balls.flush();
+				}
+				if(score/10>49){
+					balls.putBoolean("yellow", true);
 					balls.flush();
 				}
 			}
@@ -97,8 +113,16 @@ public class GameWorld {
 			if(score > random.HighScore){
 				random.score.putInteger("scorerandom", score);
 				random.score.flush();
-				if(score>2){
-					balls.putBoolean("red",true);
+				if(score>9){
+					balls.putBoolean("orange",true);
+					balls.flush();
+				}
+				if(score>19){
+					balls.putBoolean("cyan", true);
+					balls.flush();
+				}
+				if(score>29){
+					balls.putBoolean("white", true);
 					balls.flush();
 				}
 			}

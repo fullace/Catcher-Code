@@ -4,17 +4,25 @@ package com.full.ace;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class ShopScreen implements Screen {
 	
 	final Catcher game;
 	private boolean blue,green,red,orange,cyan,pink,black,white,yellow;
 	 Preferences balls;
+	 public int showAchievements;
+	 private BitmapFont font;
+	 private int wait;
 	
 	public ShopScreen(final Catcher game){
 		this.game=game;
-		Gdx.input.setInputProcessor(new InputHandlerShop(game));
+		Gdx.input.setInputProcessor(new InputHandlerShop(game,this));
 		balls = Gdx.app.getPreferences("balls");
+		showAchievements = 0;
+		font =new BitmapFont(Gdx.files.internal("catcherM.fnt"));
+		font.setScale(Gdx.graphics.getDensity());
+		wait=0;
 	}
 
 	@Override
@@ -46,6 +54,50 @@ public class ShopScreen implements Screen {
 		if(black==false)game.batch.draw(Loader.ShopLock,480,100);
 		if(white==false)game.batch.draw(Loader.ShopLock,585,100);
 		if(yellow==false)game.batch.draw(Loader.ShopLock,690,100);
+		if(game.showWindowMedium==true){
+			wait++;
+			game.batch.draw(Loader.windowM,200,100);
+			if(Gdx.input.isTouched() && wait > 10){
+				if(game.InBounds(Gdx.input.getX(), Gdx.input.getY(),70*game.h,370*game.h,200*game.w,600*game.w )){
+					game.showWindowMedium=false;
+					showAchievements=0;
+					wait=0;
+				}
+			}
+			switch(showAchievements){
+			case 0:
+				//
+				break;
+			case 1:
+				font.drawMultiLine(game.batch,"Blue Ball needs \na score of 10 \nin normal mode \nto unlock",220,380);
+				break;
+			case 2:
+				font.drawMultiLine(game.batch,"Green Ball \nneeds a score \nof 10 in survival\nmode to unlock",220,380);
+				break;
+			case 3:
+				font.drawMultiLine(game.batch,"Red Ball needs \na score of 20 \nin normal mode \nto unlock",220,380);
+				break;
+			case 4:
+				font.drawMultiLine(game.batch,"Orange Ball \nneeds a score \nof 10 in random\nmode to unlock ",220,380);
+				break;
+			case 5:
+				font.drawMultiLine(game.batch,"Cyan Ball needs \na score of 20\nin random \nmode to unlock",220,380);
+				break;
+			case 6:
+				font.drawMultiLine(game.batch,"Pink Ball needs \na score of 20 in\nsurvival mode\nto unlock",220,380);
+				break;
+			case 7:
+				font.drawMultiLine(game.batch,"Black Ball \nneeds a score of\n30 in normal \nmode to unlock",220,380);
+				break;
+			case 8:
+				font.drawMultiLine(game.batch,"White Ball \nneeds a score of\n30 in random \nmode to unlock",220,380);
+				break;
+			case 9:
+				font.drawMultiLine(game.batch,"Golden Ball \nneeds a score of\n50 in survival \nmode to unlock",220,380);
+				break;
+			}
+		}
+		
 		game.batch.end();
 	}
 
