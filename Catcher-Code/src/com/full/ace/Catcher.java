@@ -16,8 +16,10 @@ public class Catcher extends Game {
 	public SpriteBatch batch;
 	public BitmapFont writer;
 	public OrthographicCamera camera;
-	public static float SCREEN_WIDTH;
-	public static float SCREEN_HEIGHT;
+	private float SCREEN_WIDTH;
+	private float SCREEN_HEIGHT;
+	public float w;
+	public float h;
 	public Texture Ball;
 	public int scoreNormal;
 	public int scoreSurvival;
@@ -29,8 +31,11 @@ public class Catcher extends Game {
 		batch = new SpriteBatch();
 		writer  = new BitmapFont(Gdx.files.internal("catcher.fnt"));
 		camera=new OrthographicCamera();
-		SCREEN_WIDTH=Gdx.graphics.getWidth() / 800;
-		SCREEN_HEIGHT=Gdx.graphics.getHeight() / 480;
+		SCREEN_WIDTH=Gdx.graphics.getWidth();
+		SCREEN_HEIGHT=Gdx.graphics.getHeight();
+		w=SCREEN_WIDTH/800;
+		h=SCREEN_HEIGHT/480;
+		writer.setScale(Gdx.graphics.getDensity());
 		//Preferences
 		Preferences ball = Gdx.app.getPreferences("ball");
 		//prefs high scores
@@ -48,7 +53,7 @@ public class Catcher extends Game {
 		
 	}
 	
-	public boolean InBounds(int x,int y,float up,float down,float left,float right){
+	public boolean InBounds(float x,float y,float up,float down,float left,float right){
 		if(y > up && y < down && x > left && x < right){
 			return true;
 		}

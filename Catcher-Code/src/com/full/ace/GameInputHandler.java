@@ -1,5 +1,6 @@
 package com.full.ace;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.full.ace.GameWorld.GameState;
 
@@ -7,10 +8,19 @@ public class GameInputHandler implements InputProcessor{
 	
 	final Catcher game;
 	private GameWorld world;
+	private float w;
+	private float h;
+	private float screenh;
+	private float screenw;
 	
 	public GameInputHandler(final Catcher game,GameWorld world){
 		this.game=game;
 		this.world=world;
+		game.camera.setToOrtho(false,800,480);
+		screenh=Gdx.graphics.getHeight();
+		screenw=Gdx.graphics.getWidth();
+		w=screenw/800;
+		h=screenh/480;
 	}
 
 	@Override
@@ -39,16 +49,16 @@ public class GameInputHandler implements InputProcessor{
 		if(world.state==world.state.Running){
     		int x=screenX;
     		int y=screenY;
-    		if(game.InBounds(x, y, 0, 100 * game.SCREEN_HEIGHT, 0, 100 * game.SCREEN_WIDTH)){    
+    		if(game.InBounds(x, y, 0, 100 * h, 0, 100 * w)){    
     			world.player.moveToUpperLeft();
     		}
-    		else if(game.InBounds(x,y,0,100 * game.SCREEN_HEIGHT,700 * game.SCREEN_WIDTH,800 * game.SCREEN_WIDTH)){
+    		else if(game.InBounds(x,y,0,100 * h,700 * w,800 * w)){
     			world.player.moveToUpperRight();
     		}
-    		else if(game.InBounds(x,y,380 * game.SCREEN_HEIGHT,480 * game.SCREEN_HEIGHT,0,100 * game.SCREEN_WIDTH)){
+    		else if(game.InBounds(x,y,380 * h,480 * h,0,100 * w)){
     			world.player.moveToBottomLeft();
     		}
-    		else if(game.InBounds(x,y,380 * game.SCREEN_HEIGHT,480 * game.SCREEN_HEIGHT,700 * game.SCREEN_WIDTH,800 * game.SCREEN_WIDTH)){
+    		else if(game.InBounds(x,y,380 * h,480 * h,700 * w,800 * w)){
     			world.player.moveToBottomRight();
     		}
     		else world.player.stopMoving(); 

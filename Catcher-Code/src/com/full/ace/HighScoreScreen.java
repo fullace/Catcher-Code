@@ -19,9 +19,7 @@ public class HighScoreScreen implements Screen {
 		this.game=game;
 		score=Gdx.app.getPreferences("highscore");
 		scores=new BitmapFont(Gdx.files.internal("catcherB.fnt"));
-		float screenWidth = Gdx.graphics.getWidth() / 800;
-		float screenHeight= Gdx.graphics.getHeight()/480 ;
-		scores.setScale(screenWidth,screenHeight);
+		scores.setScale(Gdx.graphics.getDensity());
 		timesPlayed = Gdx.app.getPreferences("timesPlayed");
 		tpn = timesPlayed.getInteger("normal",0);
 		tps = timesPlayed.getInteger("survival",0);
@@ -42,9 +40,16 @@ public class HighScoreScreen implements Screen {
 		scores.draw(game.batch,String.valueOf(score.getInteger("scoresurvival",0)/10),400,215);
 		scores.draw(game.batch,String.valueOf(score.getInteger("scorerandom",0)),400,100);
 		game.writer.draw(game.batch, String.valueOf(tpn), 630, 320);
-		game.writer.draw(game.batch, String.valueOf(100), 630, 205);
-		game.writer.draw(game.batch, String.valueOf(12334), 630, 90);
+		game.writer.draw(game.batch, String.valueOf(tps), 630, 205);
+		game.writer.draw(game.batch, String.valueOf(tpr), 630, 90);
 		game.batch.end();
+		if(Gdx.input.isTouched()){
+			float x = Gdx.input.getX();
+			float y = Gdx.input.getY();
+			if(game.InBounds(x, y, 5*game.h, 125*game.h, 675*game.w, 795*game.w)){
+				game.setScreen(new MainMenuScreen(game));
+			}
+		}
 	}
 
 	@Override

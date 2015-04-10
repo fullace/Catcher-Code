@@ -10,14 +10,13 @@ public class GameOverScreen implements Screen {
 	private int score;
 	private int gamemode;
 	private BitmapFont scores;
-	private float w= Gdx.graphics.getWidth() / 800;
-	private float h= Gdx.graphics.getHeight()/ 480;
 	
 	public GameOverScreen(final Catcher game,int score,int gamemode){
 		this.game=game;
 		this.score=score;
 		this.gamemode=gamemode;
 		scores = new BitmapFont(Gdx.files.internal("catcherM.fnt"));
+		scores.setScale(Gdx.graphics.getDensity());
 	}
 
 	@Override
@@ -43,8 +42,11 @@ public class GameOverScreen implements Screen {
 		if(Gdx.input.isTouched()){
 			int x = Gdx.input.getX();
 			int y = Gdx.input.getY();
-			if(x > 260*w && x < 390*w && y > 255*h && y < 385*h){
+			if(x > 260*game.w && x < 390*game.w && y > 255*game.h && y < 385*game.h){
 				game.setScreen(new MainMenuScreen(game));
+			}
+			if(x > 405*game.w && x < 535*game.w && y > 255*game.h && y < 385*game.h){
+				game.setScreen(new GameScreen(game,gamemode));
 			}
 		}
 	}

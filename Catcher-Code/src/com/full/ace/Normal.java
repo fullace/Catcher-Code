@@ -124,7 +124,6 @@ public class Normal {
 			{
 				alive=false;
 				world.score++;
-				Gdx.app.log("score",String.valueOf(HighScore));
 			}
 		}
 	}

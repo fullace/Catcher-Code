@@ -14,12 +14,10 @@ public class GameRenderer {
 	private GameWorld world;
 	
 	public GameRenderer(final Catcher game,GameWorld world){
-		float screenWidth  = Gdx.graphics.getWidth() / 800;
-		float screenHeight = Gdx.graphics.getHeight()/ 480;
 		this.game=game;
 		this.world=world;
 		game.camera.setToOrtho(false,800,480);
-		game.writer.setScale(screenWidth,screenHeight);
+		game.writer.setScale(Gdx.graphics.getDensity());
 	}
 	
 	public void render(){
