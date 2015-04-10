@@ -19,11 +19,12 @@ public class HighScoreScreen implements Screen {
 		this.game=game;
 		score=Gdx.app.getPreferences("highscore");
 		scores=new BitmapFont(Gdx.files.internal("catcherB.fnt"));
-		scores.setScale(Gdx.graphics.getDensity());
+		//scores.setScale(Gdx.graphics.getDensity());
 		timesPlayed = Gdx.app.getPreferences("timesPlayed");
 		tpn = timesPlayed.getInteger("normal",0);
 		tps = timesPlayed.getInteger("survival",0);
 		tpr = timesPlayed.getInteger("random",0);
+		game.camera.setToOrtho(false,800,480);
 	}
 
 	@Override

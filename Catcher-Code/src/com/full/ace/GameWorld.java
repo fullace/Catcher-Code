@@ -29,7 +29,7 @@ public class GameWorld {
 		player=new Player(400-40/2,480);
 		player.setWaiting();
 		timesPlayed = Gdx.app.getPreferences("timesPlayed");
-		score=500;
+		score=0;
 		balls = Gdx.app.getPreferences("balls");
 		switch(gamemode){
 		case MODE_NORMAL:

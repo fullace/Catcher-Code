@@ -17,7 +17,7 @@ public class GameRenderer {
 		this.game=game;
 		this.world=world;
 		game.camera.setToOrtho(false,800,480);
-		game.writer.setScale(Gdx.graphics.getDensity());
+		//game.writer.setScale(Gdx.graphics.getDensity());
 	}
 	
 	public void render(){

@@ -20,8 +20,10 @@ public class ShopScreen implements Screen {
 		Gdx.input.setInputProcessor(new InputHandlerShop(game,this));
 		balls = Gdx.app.getPreferences("balls");
 		showAchievements = 0;
+		game.camera.setToOrtho(false,800,480);
 		font =new BitmapFont(Gdx.files.internal("catcherM.fnt"));
-		font.setScale(Gdx.graphics.getDensity());
+		//font.setScale(Gdx.graphics.getDensity());
+		Gdx.app.log("density",String.valueOf(Gdx.graphics.getDensity()));
 		wait=0;
 	}
 
@@ -42,6 +44,7 @@ public class ShopScreen implements Screen {
 		black=balls.getBoolean("black",false);
 		white=balls.getBoolean("white",false);
 		yellow=balls.getBoolean("yellow",false);
+		game.camera.update();
 		game.batch.begin();
 		game.batch.draw(Loader.Shop, 0,0);
 		game.batch.draw(game.Ball,105,130);

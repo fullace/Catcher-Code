@@ -16,7 +16,7 @@ public class GameOverScreen implements Screen {
 		this.score=score;
 		this.gamemode=gamemode;
 		scores = new BitmapFont(Gdx.files.internal("catcherM.fnt"));
-		scores.setScale(Gdx.graphics.getDensity());
+		//scores.setScale(Gdx.graphics.getDensity());
 	}
 
 	@Override

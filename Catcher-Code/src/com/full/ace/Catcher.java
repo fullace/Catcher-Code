@@ -11,8 +11,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Catcher extends Game {
 	private static final String TITLE = "Catcher";
-	private static final float VERSION = 0.9f;
-	private static final int VERSION_NUMBER = 11;
+	private static final float VERSION = 1.0f;
+	private static final int VERSION_NUMBER = 14;
 	public SpriteBatch batch;
 	public BitmapFont writer;
 	public OrthographicCamera camera;
@@ -36,7 +36,7 @@ public class Catcher extends Game {
 		SCREEN_HEIGHT=Gdx.graphics.getHeight();
 		w=SCREEN_WIDTH/800;
 		h=SCREEN_HEIGHT/480;
-		writer.setScale(Gdx.graphics.getDensity());
+		//writer.setScale(Gdx.graphics.getDensity());
 		//Preferences
 		Preferences ball = Gdx.app.getPreferences("ball");
 		//prefs high scores
